@@ -13,6 +13,7 @@ import java.util.Objects;
  * @author Luis
  */
 public class ProductoModelo {
+
     private Integer idProducto;
     private String nombreProducto;
     private String detalleProducto;
@@ -22,7 +23,7 @@ public class ProductoModelo {
     private String visible;
 
     public static ArrayList<ProductoModelo> listaProductos = new ArrayList<>();
-    
+
     public ProductoModelo() {
     }
 
@@ -44,8 +45,6 @@ public class ProductoModelo {
         this.categoriaProducto = categoriaProducto;
         this.visible = visible;
     }
-  
-    
 
     public Integer getIdProducto() {
         return idProducto;
@@ -103,8 +102,7 @@ public class ProductoModelo {
         this.visible = visible;
     }
 
-
-    public void nuevoProducto(ProductoModelo producto){
+    public void nuevoProducto(ProductoModelo producto) {
         int idProducto = 0;
         String productovisible = producto.getVisible();
         if (!listaProductos.isEmpty()) {
@@ -114,22 +112,21 @@ public class ProductoModelo {
                 }
             }
         }
-       
-        if (!producto.getVisible().isEmpty()) {
-            productovisible="Visible";
-        }else productovisible = "No Visible";
-        
+
+     
+    
+
         idProducto += 1;
         listaProductos.add(new ProductoModelo(idProducto, producto.getNombreProducto(),
                 producto.getDetalleProducto(), producto.getCantidadProducto(),
-                producto.getPrecioProducto(), producto.getCategoriaProducto(), productovisible));
+                producto.getPrecioProducto(), producto.getCategoriaProducto(), producto.getVisible()));
     }
-    
-     public void modificarProducto(ProductoModelo producto) {
+
+    public void modificarProducto(ProductoModelo producto) {
         if (!listaProductos.isEmpty()) {
 
             for (ProductoModelo lista : listaProductos) {
-                if ( Objects.equals(lista.getIdProducto(), producto.getIdProducto())) {
+                if (Objects.equals(lista.getIdProducto(), producto.getIdProducto())) {
                     lista.setNombreProducto(producto.getNombreProducto());
                     lista.setDetalleProducto(producto.getDetalleProducto());
                     lista.setCantidadProducto(producto.getCantidadProducto());
@@ -147,13 +144,17 @@ public class ProductoModelo {
             ProductoModelo cat = new ProductoModelo();
             for (ProductoModelo lista : listaProductos) {
                 if (Objects.equals(lista.getIdProducto(), producto.getIdProducto())) {
-                    cat = lista; 
+                    cat = lista;
                 }
             }
             listaProductos.remove(cat);
         }
     }
+
     
-   
+        
     
+
+    
+
 }

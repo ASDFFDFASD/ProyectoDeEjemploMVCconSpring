@@ -35,33 +35,33 @@
                     </li>
 
                     <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header waves-effect waves-yellow">Productos<i class="material-icons">arrow_drop_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                  <li><a href="nuevoproducto" class="waves-effect waves-yellow">Nuevo Producto</a></li>
-                  <li><a href="listarproductos" class="waves-effect waves-yellow">Listar Productos</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-      
-      <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header waves-effect waves-yellow">Categorías<i class="material-icons">arrow_drop_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                  <li><a href="nuevacategoria" class="waves-effect waves-yellow">Nueva Categoría</a></li>
-                  <li><a href="listarcategorias" class="waves-effect waves-yellow">Listar Categorías</a></li>
-                  
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-yellow">Productos<i class="material-icons">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="nuevoproducto" class="waves-effect waves-yellow">Nuevo Producto</a></li>
+                                        <li><a href="listarproductos" class="waves-effect waves-yellow">Listar Productos</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-yellow">Categorías<i class="material-icons">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="nuevacategoria" class="waves-effect waves-yellow">Nueva Categoría</a></li>
+                                        <li><a href="listarcategorias" class="waves-effect waves-yellow">Listar Categorías</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
 
 
 
@@ -84,7 +84,7 @@
 
 
 
-                    <form class="col s12" action="guardarproducto"  method="GET">
+                    <form class="col s12" action="guardarproducto"  method="GET" >
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="txtnombre" name="nombreProducto" type="text" class="validate">
@@ -117,22 +117,22 @@
                                     {{#categoria}}
                                     <option value="{{nombre}}"> {{nombre}} </option>
                                     {{/categoria}}
-                                    
+
                                 </select>
                                 <label>Categoría</label>
                             </div>
-                                <div class="input-field col s4 offset-s2">
+                            <div class="input-field col s4 offset-s2">
 
-                                    <input type="checkbox" id="disponible" name="visible" checked="checked" />
-                                    <label for="disponible">Visible</label>
-                                </div>
-                            
+                                <input type="checkbox" id="disponible" name="visible" checked="checked" />
+                                <label for="disponible">Visible</label>
+                            </div>
+
                         </div>
                         <div class="row">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
-    <i class="material-icons right">send</i>
-  </button>
-                            
+                                <i class="material-icons right">send</i>
+                            </button>
+
                         </div>
 
                     </form>
@@ -150,14 +150,16 @@
 
         <script>
 
-            $(document).ready(function () {
+                        $(document).ready(function () {
 
-                $(".button-collapse").sideNav();
-                //$(".side-nav").sideNav('show');
-                $('.collapsible').collapsible();
-                $('select').material_select();
+                            $(".button-collapse").sideNav();
+                            //$(".side-nav").sideNav('show');
+                            $('.collapsible').collapsible();
+                            $('select').material_select();
 
-            })
+                            
+
+                        })
 
         </script>
 
