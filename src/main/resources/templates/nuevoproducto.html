@@ -62,9 +62,6 @@
                             </li>
                         </ul>
                     </li>
-
-
-
                 </ul>
             </div>
         </nav>
@@ -81,10 +78,7 @@
                 <h3 class="cyan-text text-darken-3">Nuevo Producto</h3>
 
                 <div class="row">
-
-
-
-                    <form class="col s12" action="guardarproducto"  method="GET" >
+                    <form class="col s12" action="guardarproducto"  method="POST" >
                         <div class="row">
                             <div class="input-field col s12">
                                 <input id="txtnombre" name="nombreProducto" type="text" class="validate">
@@ -97,50 +91,41 @@
                                 <label for="txtdetalle">Detalle Producto</label>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="txtcantidad" name="cantidadProducto" type="text" class="validate">
+                                <input id="txtcantidad" name="cantidadProducto" type="number" class="validate">
                                 <label for="txtcantidad">Cantidad Producto</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="txtprecio" name="precioProducto" type="text" class="validate">
+                                <input id="txtprecio" name="precioProducto" type="number" class="validate">
                                 <label for="txtprecio">Precio Producto</label>
                             </div>
                         </div>
-
                         <div class="row">
-
                             <div class="input-field col s6">
                                 <select name="categoriaProducto">
                                     <option value="" disabled selected>Selecciona una opción</option>
                                     {{#categoria}}
                                     <option value="{{nombre}}"> {{nombre}} </option>
                                     {{/categoria}}
-
                                 </select>
                                 <label>Categoría</label>
                             </div>
                             <div class="input-field col s4 offset-s2">
-
-                                <input type="checkbox" id="disponible" name="visible" checked="checked" />
+                                <input type="checkbox" id="disponible" name="visible" checked="checked" value="Visible"/>
                                 <label for="disponible">Visible</label>
                             </div>
-
                         </div>
                         <div class="row">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
                                 <i class="material-icons right">send</i>
                             </button>
-
                         </div>
-
                     </form>
-
                 </div>
             </div>
-
         </div>
+
 
 
 
@@ -150,16 +135,16 @@
 
         <script>
 
-                        $(document).ready(function () {
+$(document).ready(function () {
 
-                            $(".button-collapse").sideNav();
-                            //$(".side-nav").sideNav('show');
-                            $('.collapsible').collapsible();
-                            $('select').material_select();
+    $(".button-collapse").sideNav();
+    //$(".side-nav").sideNav('show');
+    $('.collapsible').collapsible();
+    $('select').material_select();
 
-                            
 
-                        })
+
+});
 
         </script>
 

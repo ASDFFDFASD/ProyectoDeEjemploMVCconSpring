@@ -18,42 +18,49 @@ import com.inacap.webcomponent.model.ProductoModelo;
 @Controller
 public class ProductoController {
     
+    public static final String LISTA_PRODUCTOS = "listaproductos";
+    public static final String ATR_CATEGORIA = "categoria";
+    public static final String ATR_PRODUCTO = "producto";
+
     @RequestMapping("/nuevoproducto")
     public String page(Model model) {
-        model.addAttribute("categoria", CategoriaModelo.listaCategorias );
+        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
         return "nuevoproducto";
     }
-    
+
     @RequestMapping("/guardarproducto")
-    public String guardarProducto(Model model, ProductoModelo producto){
-        ProductoModelo pro = new ProductoModelo();
-        pro.nuevoProducto(producto);
-        
-        model.addAttribute("producto", ProductoModelo.listaProductos);
-        
-        return "listaproductos";
+    public String guardarProducto(Model model, ProductoModelo producto) {
+       ProductoModelo produc = new ProductoModelo();
+       produc.nuevoProducto(producto);
+
+        model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
+        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        return LISTA_PRODUCTOS;
     }
-    
+
     @RequestMapping("/listarproductos")
-    public String listarProductos(Model model, ProductoModelo modelo){
-        model.addAttribute("producto",ProductoModelo.listaProductos);
-        return "listaproductos";
+    public String listarProductos(Model model, ProductoModelo modelo) {
+         model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
+        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+      return LISTA_PRODUCTOS;
     }
-    
+
     @RequestMapping("/modificarproducto")
-    public String modificarProducto(Model model, ProductoModelo producto){
-    ProductoModelo product = new ProductoModelo();
-    product.modificarProducto(producto);
-    model.addAttribute("producto", ProductoModelo.listaProductos);
-    return "listaproductos";
+    public String modificarProducto(Model model, ProductoModelo producto) {
+        ProductoModelo product = new ProductoModelo();
+        product.modificarProducto(producto);
+          model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
+        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        return LISTA_PRODUCTOS;
     }
-    
+
     @RequestMapping("/eliminarproducto")
-    public String eliminarProducto(Model model, ProductoModelo producto){
+    public String eliminarProducto(Model model, ProductoModelo producto) {
         ProductoModelo product = new ProductoModelo();
         product.eliminarProducto(producto);
-        model.addAttribute("producto", ProductoModelo.listaProductos);
-        return "listaproductos";
+          model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
+        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        return LISTA_PRODUCTOS;
     }
-    
+
 }

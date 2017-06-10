@@ -35,33 +35,33 @@
                     </li>
 
                     <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header waves-effect waves-yellow">Productos<i class="material-icons">arrow_drop_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                  <li><a href="nuevoproducto" class="waves-effect waves-yellow">Nuevo Producto</a></li>
-                  <li><a href="listarproductos" class="waves-effect waves-yellow">Listar Productos</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
-      
-      <li class="no-padding">
-        <ul class="collapsible collapsible-accordion">
-          <li>
-            <a class="collapsible-header waves-effect waves-yellow">Categorías<i class="material-icons">arrow_drop_down</i></a>
-            <div class="collapsible-body">
-              <ul>
-                  <li><a href="nuevacategoria" class="waves-effect waves-yellow">Nueva Categoría</a></li>
-                  <li><a href="listarcategorias" class="waves-effect waves-yellow">Listar Categorías</a></li>
-                  
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </li>
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-yellow">Productos<i class="material-icons">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="nuevoproducto" class="waves-effect waves-yellow">Nuevo Producto</a></li>
+                                        <li><a href="listarproductos" class="waves-effect waves-yellow">Listar Productos</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header waves-effect waves-yellow">Categorías<i class="material-icons">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="nuevacategoria" class="waves-effect waves-yellow">Nueva Categoría</a></li>
+                                        <li><a href="listarcategorias" class="waves-effect waves-yellow">Listar Categorías</a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
 
 
 
@@ -83,7 +83,7 @@
                         <thead>
                             <tr>
 
-                               
+
                                 <th>Nombre Prodcuto</th>
                                 <th>Detalle Producto</th>
                                 <th>Stock Producto</th>
@@ -104,16 +104,14 @@
                                 <td>{{precioProducto}}</td>
                                 <td>{{categoriaProducto}}</td>
                                 <td>{{visible}}</td>
-                               
-
                                 <td>
-                                    <a class="btn-floating yellow darken-1"><i class="material-icons">search</i></a>
-                                    <a class="btn-floating green "><i class="material-icons">mode_edit</i></a>
-                                    <a class="btn-floating red"><i class="material-icons">delete</i></a>
+                                    <a class="btn-floating yellow darken-1 btnVerDetalle" href="#verDetalleModal"><i class="material-icons">search</i></a>
+                                    <a class="btn-floating green  btnEditar" href="#editarModal"><i class="material-icons">mode_edit</i></a>
+                                    <a class="btn-floating red btnEliminar" href="#eliminarModal"><i class="material-icons">delete</i></a>
                                 </td>
 
                             </tr>
-                      {{/producto}}
+                            {{/producto}}
                         </tbody>
                     </table>
                 </div>
@@ -121,18 +119,141 @@
 
             </div>
 
-            <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-                <!-- Teal page content
-        
-                      This content will be:
-                  9-columns-wide on large screens,
-                  8-columns-wide on medium screens,
-                  12-columns-wide on small screens  -->
+            <div class="col s12 m8 l9">
+
 
             </div>
 
         </div>
+        <div id="verDetalleModal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Detalle Producto</h4>
+                <div class="divider"></div>
 
+                <div class="section">
+                    <h5>Nombre Producto</h5>
+                    <p id="pNombre"></p>
+                </div>
+
+                <div class="section">
+                    <h5>Detalle Producto</h5>
+                    <p id="pDetalle"></p>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Aceptar</a>
+            </div>
+        </div>
+
+
+
+        <div id="eliminarModal" class="modal">
+            <div class="modal-content">
+                <h4>¿Desea eliminar esta categoria?</h4>
+                <div class="divider"></div>
+                <h6>Nombre Categoria</h6>
+                <p id="pENombre"></p>
+                <div class="divider"></div>
+                <h6>Detalle Categoria </h6>
+                <p id="pEDetalle"></p>
+
+                <form action="" method="POST">
+                    <div class="row hide">
+                        <div class="input-field col s12">
+                            <input id="txtIDEliminar" name="idCategoria" type="text" class="validate">
+                            <label for="txtID">ID Categoría</label>
+                        </div>
+                    </div>  
+
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar
+                        <i class="material-icons right">delete</i>
+                    </button>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+            </div>
+        </div>
+
+
+        <div id="editarModal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Detalle Producto</h4>
+                <div class="divider"></div>
+
+
+                <form class="col s12" action="" method="POST" >
+                    <div class="row hide">
+                        <div class="input-field col s12">
+                            <input id="txtID" name="idCategoria" type="text" class="validate">
+                            <label for="txtID">ID Categoría</label>
+                        </div>
+                    </div>  
+
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="txtNombre" name="nombre" type="text" class="validate">
+                            <label for="txtNombre">Nombre Producto</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="txtDetalle" name="detalle" type="text" class="validate">
+                            <label for="txtDetalle">Detalle Producto</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="txtcantidad" name="cantidadProducto" type="text" class="validate">
+                            <label for="txtcantidad">Cantidad Producto</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="txtprecio" name="precioProducto" type="text" class="validate">
+                            <label for="txtprecio">Precio Producto</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="input-field col s6">
+                            <select name="categoriaProducto">
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                {{#categoria}}
+                                <option value="{{nombre}}"> {{nombre}} </option>
+                                {{/categoria}}
+
+                            </select>
+                            <label>Categoría</label>
+                        </div>
+                        <div class="input-field col s4 offset-s2">
+
+                            <input type="checkbox" id="disponible" name="visible" checked="checked" value="Visible"/>
+                            <label for="disponible">Visible</label>
+                        </div>
+
+                
+
+
+
+                    </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Aceptar</a>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                    <i class="material-icons left">send</i>
+                </button>
+                </form>
+            </div>
+            
+
+        </div>
 
 
         <!--Import jQuery before materialize.js-->
@@ -140,15 +261,54 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
 
         <script>
-            
-            $(document).ready(function () {
-                
-                $(".button-collapse").sideNav();
-                //$(".side-nav").sideNav('show');
-                $('.collapsible').collapsible();
-                
-            })
-            
+
+$(document).ready(function () {
+
+    $(".button-collapse").sideNav();
+    //$(".side-nav").sideNav('show');
+    $('.collapsible').collapsible();
+    $('.modal').modal();
+
+    $('.btnVerDetalle').click(function () {
+
+        var nombre = $(this).parents('tr').find('td')[0].innerHTML;
+        var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+        $('#pNombre').text(nombre);
+        $('#pDetalle').text(detalle);
+    });
+
+    $('.btnEliminar').click(function () {
+
+        var nombre = $(this).parents('tr').find('td')[0].innerHTML;
+        var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+        var idCategoria = $(this).parents('tr').attr('id');
+
+        $('#pENombre').text(nombre);
+        $('#pEDetalle').text(detalle);
+        $('#txtIDEliminar').val(idCategoria);
+    });
+
+
+    $('.btnEditar').click(function () {
+
+        var nombre = $(this).parents('tr').find('td')[0].innerHTML;
+        var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+        var idCategoria = $(this).parents('tr').attr('id');
+        var cantidad = $(this).parents('tr').find('td')[2].innerHTML;
+        var precio = $(this).parents('tr').find('td')[3].innerHTML;
+
+
+        $('#txtNombre').val(nombre);
+        $('#txtDetalle').val(detalle);
+        $('#txtID').val(idCategoria);
+        $('#txtcantidad').val(cantidad);
+        $('#txtprecio').val(precio);
+
+
+        Materialize.updateTextFields();
+    });
+});
+
         </script>
 
     </body>

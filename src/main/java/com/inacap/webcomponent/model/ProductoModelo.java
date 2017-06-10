@@ -104,17 +104,14 @@ public class ProductoModelo {
 
     public void nuevoProducto(ProductoModelo producto) {
         int idProducto = 0;
-        String productovisible = producto.getVisible();
+        
         if (!listaProductos.isEmpty()) {
             for (ProductoModelo lista : listaProductos) {
-                if (producto.getIdProducto() > idProducto) {
-                    idProducto = producto.getIdProducto();
+                if (lista.getIdProducto() > idProducto) {
+                   idProducto = lista.getIdProducto();
                 }
             }
         }
-
-     
-    
 
         idProducto += 1;
         listaProductos.add(new ProductoModelo(idProducto, producto.getNombreProducto(),
