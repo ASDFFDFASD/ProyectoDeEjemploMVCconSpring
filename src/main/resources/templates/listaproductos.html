@@ -245,11 +245,11 @@
                             </select>
                             <label>Categoría</label>
                         </div>
-                        <div class="input-field col s4 offset-s2">
-
-                            <input type="checkbox" id="disponible" name="visible" checked="checked" value="Visible"/>
-                            <label for="disponible">Visible</label>
-                        </div>
+                            <div class="input-field col s4 offset-s2">
+                                <input class="hide" type="text" id="disponible" name="visible" value="Visible" />
+                                <input type="checkbox" id="opcion" checked="checked" />
+                                <label for="opcion">Visible</label>
+                            </div>
 
 
 
@@ -332,6 +332,17 @@ $(document).ready(function () {
 
         Materialize.updateTextFields();
     });
+       $( '#opcion' ).on( 'click', function() {
+    if( $(this).is(':checked') ){
+        // Hacer algo si el checkbox ha sido seleccionado
+        
+        $('#disponible').val("Visible");
+    } else {
+        // Hacer algo si el checkbox ha sido deseleccionado
+       
+        $('#disponible').val("No Visible");
+    }
+});
 });
 
         </script>
