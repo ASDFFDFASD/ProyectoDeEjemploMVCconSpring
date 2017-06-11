@@ -14,10 +14,10 @@ import com.inacap.webcomponent.model.ProductoModelo;
 /**
  *
  * @author Luis
- */
+ */ 
 @Controller
 public class ProductoController {
-    
+     
     public static final String LISTA_PRODUCTOS = "listaproductos";
     public static final String ATR_CATEGORIA = "categoria";
     public static final String ATR_PRODUCTO = "producto";
@@ -27,17 +27,16 @@ public class ProductoController {
         model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
         return "nuevoproducto";
     }
-
+ 
     @RequestMapping("/guardarproducto")
     public String guardarProducto(Model model, ProductoModelo producto) {
        ProductoModelo produc = new ProductoModelo();
        produc.nuevoProducto(producto);
-
         model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
         model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
         return LISTA_PRODUCTOS;
     }
-
+  
     @RequestMapping("/listarproductos")
     public String listarProductos(Model model, ProductoModelo modelo) {
          model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
@@ -52,15 +51,18 @@ public class ProductoController {
           model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
         model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
         return LISTA_PRODUCTOS;
+          
     }
 
     @RequestMapping("/eliminarproducto")
     public String eliminarProducto(Model model, ProductoModelo producto) {
         ProductoModelo product = new ProductoModelo();
         product.eliminarProducto(producto);
-          model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
+        model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
         model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        
         return LISTA_PRODUCTOS;
+       
     }
 
 }

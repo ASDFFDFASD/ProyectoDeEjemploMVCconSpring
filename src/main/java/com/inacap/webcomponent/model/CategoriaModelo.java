@@ -102,6 +102,7 @@ public class CategoriaModelo {
                 }
             }
             listaCategorias.remove(cat);
+            
        // }
     }
     
@@ -109,12 +110,5 @@ public class CategoriaModelo {
     
     
 }
-
-
-
-
-
-
-
 
 

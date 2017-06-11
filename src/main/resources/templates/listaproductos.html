@@ -109,7 +109,6 @@
                                     <a class="btn-floating green  btnEditar" href="#editarModal"><i class="material-icons">mode_edit</i></a>
                                     <a class="btn-floating red btnEliminar" href="#eliminarModal"><i class="material-icons">delete</i></a>
                                 </td>
-
                             </tr>
                             {{/producto}}
                         </tbody>
@@ -118,9 +117,9 @@
 
 
             </div>
+             
 
             <div class="col s12 m8 l9">
-
 
             </div>
 
@@ -140,6 +139,24 @@
                     <p id="pDetalle"></p>
                 </div>
 
+                <div class="section">
+                    <h5>Cantidad Producto</h5>
+                    <p id="pCantidad"></p>
+                </div>
+                <div class="section">
+                    <h5>Precio Producto</h5>
+                    <p id="pPrecio"></p>
+                </div>
+                <div class="section">
+                    <h5>Categoria Producto</h5>
+                    <p id="pCategoria"></p>
+                </div>
+                <div class="section">
+                    <h5>Visibilidad del Producto</h5>
+                    <p id="pVisible"></p>
+                </div>
+
+
             </div>
             <div class="modal-footer">
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Aceptar</a>
@@ -150,18 +167,18 @@
 
         <div id="eliminarModal" class="modal">
             <div class="modal-content">
-                <h4>¿Desea eliminar esta categoria?</h4>
+                <h4>¿Desea eliminar este producto?</h4>
                 <div class="divider"></div>
-                <h6>Nombre Categoria</h6>
+                <h6>Nombre producto</h6>
                 <p id="pENombre"></p>
                 <div class="divider"></div>
-                <h6>Detalle Categoria </h6>
+                <h6>Detalle producto </h6>
                 <p id="pEDetalle"></p>
 
-                <form action="" method="POST">
+                <form action="eliminarproducto" method="POST">
                     <div class="row hide">
                         <div class="input-field col s12">
-                            <input id="txtIDEliminar" name="idCategoria" type="text" class="validate">
+                            <input id="txtIDEliminar" name="idProducto" type="text" class="validate">
                             <label for="txtID">ID Categoría</label>
                         </div>
                     </div>  
@@ -184,10 +201,10 @@
                 <div class="divider"></div>
 
 
-                <form class="col s12" action="" method="POST" >
+                <form class="col s12" action="modificarproducto" method="POST" >
                     <div class="row hide">
                         <div class="input-field col s12">
-                            <input id="txtID" name="idCategoria" type="text" class="validate">
+                            <input id="txtID" name="idProducto" type="text" class="validate">
                             <label for="txtID">ID Categoría</label>
                         </div>
                     </div>  
@@ -196,13 +213,13 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="txtNombre" name="nombre" type="text" class="validate">
+                            <input id="txtNombre" name="nombreProducto" type="text" class="validate">
                             <label for="txtNombre">Nombre Producto</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="txtDetalle" name="detalle" type="text" class="validate">
+                            <input id="txtDetalle" name="detalleProducto" type="text" class="validate">
                             <label for="txtDetalle">Detalle Producto</label>
                         </div>
                     </div>
@@ -219,13 +236,12 @@
 
                     <div class="row">
 
-                        <div class="input-field col s6">
-                            <select name="categoriaProducto">
+                        <div class="input-field col s12">
+                            <select name="categoriaProducto" required=""> 
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 {{#categoria}}
                                 <option value="{{nombre}}"> {{nombre}} </option>
                                 {{/categoria}}
-
                             </select>
                             <label>Categoría</label>
                         </div>
@@ -235,7 +251,7 @@
                             <label for="disponible">Visible</label>
                         </div>
 
-                
+
 
 
 
@@ -251,7 +267,7 @@
                 </button>
                 </form>
             </div>
-            
+
 
         </div>
 
@@ -268,13 +284,22 @@ $(document).ready(function () {
     //$(".side-nav").sideNav('show');
     $('.collapsible').collapsible();
     $('.modal').modal();
+    $('select').material_select();
 
     $('.btnVerDetalle').click(function () {
 
         var nombre = $(this).parents('tr').find('td')[0].innerHTML;
         var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+        var cantidad = $(this).parents('tr').find('td')[2].innerHTML;
+        var precio = $(this).parents('tr').find('td')[3].innerHTML;
+        var categoria = $(this).parents('tr').find('td')[4].innerHTML;
+        var visible = $(this).parents('tr').find('td')[5].innerHTML;
         $('#pNombre').text(nombre);
         $('#pDetalle').text(detalle);
+        $('#pCantidad').text(cantidad);
+        $('#pPrecio').text(precio);
+        $('#pCategoria').text(categoria);
+        $('#pVisible').text(visible);
     });
 
     $('.btnEliminar').click(function () {

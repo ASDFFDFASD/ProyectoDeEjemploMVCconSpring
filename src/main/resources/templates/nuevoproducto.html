@@ -81,29 +81,29 @@
                     <form class="col s12" action="guardarproducto"  method="POST" >
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="txtnombre" name="nombreProducto" type="text" class="validate">
+                                <input id="txtnombre" name="nombreProducto" type="text" class="validate" required="">
                                 <label for="txtnombre">Nombre Producto</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="txtdetalle" name="detalleProducto" type="text" class="validate">
+                                <input id="txtdetalle" name="detalleProducto" type="text" class="validate" required="">
                                 <label for="txtdetalle">Detalle Producto</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="txtcantidad" name="cantidadProducto" type="number" class="validate">
+                                <input id="txtcantidad" name="cantidadProducto" type="number" class="validate" required="">
                                 <label for="txtcantidad">Cantidad Producto</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="txtprecio" name="precioProducto" type="number" class="validate">
+                                <input id="txtprecio" name="precioProducto" type="number" class="validate" required="">
                                 <label for="txtprecio">Precio Producto</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <select name="categoriaProducto">
+                                <select name="categoriaProducto" required=""> 
                                     <option value="" disabled selected>Selecciona una opción</option>
                                     {{#categoria}}
                                     <option value="{{nombre}}"> {{nombre}} </option>

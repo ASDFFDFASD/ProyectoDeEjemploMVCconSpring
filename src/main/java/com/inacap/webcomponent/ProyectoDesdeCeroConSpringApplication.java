@@ -10,5 +10,6 @@ public class ProyectoDesdeCeroConSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoDesdeCeroConSpringApplication.class, args);
+                
 	}
 }
