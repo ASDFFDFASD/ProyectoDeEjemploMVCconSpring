@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.inacap.webcomponent.model.CategoriaModelo;
 import com.inacap.webcomponent.model.ProductoModelo;
+import com.inacap.webcomponent.repository.CategoriaRepository;
+import com.inacap.webcomponent.repository.ProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -17,6 +20,10 @@ import com.inacap.webcomponent.model.ProductoModelo;
  */ 
 @Controller
 public class ProductoController {
+    @Autowired
+    private CategoriaRepository repository;
+    @Autowired
+    private ProductoRepository prepository;
      
     public static final String LISTA_PRODUCTOS = "listaproductos";
     public static final String ATR_CATEGORIA = "categoria";
@@ -24,42 +31,42 @@ public class ProductoController {
 
     @RequestMapping("/nuevoproducto")
     public String page(Model model) {
-        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        model.addAttribute(ATR_CATEGORIA, repository.findAll());
         return "nuevoproducto";
     }
  
     @RequestMapping("/guardarproducto")
     public String guardarProducto(Model model, ProductoModelo producto) {
-       ProductoModelo produc = new ProductoModelo();
-       produc.nuevoProducto(producto);
-        model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
-        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+       prepository.save(producto);
+        model.addAttribute(ATR_PRODUCTO, prepository.findAll());
+        model.addAttribute(ATR_CATEGORIA, repository.findAll());
         return LISTA_PRODUCTOS;
     }
   
     @RequestMapping("/listarproductos")
     public String listarProductos(Model model, ProductoModelo modelo) {
-         model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
-        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+         model.addAttribute(ATR_PRODUCTO, prepository.findAll());
+        model.addAttribute(ATR_CATEGORIA, repository.findAll());
       return LISTA_PRODUCTOS;
     }
 
     @RequestMapping("/modificarproducto")
     public String modificarProducto(Model model, ProductoModelo producto) {
-        ProductoModelo product = new ProductoModelo();
-        product.modificarProducto(producto);
-          model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
-        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        
+       
+        prepository.save(producto);
+        model.addAttribute(ATR_PRODUCTO, prepository.findAll());
+        model.addAttribute(ATR_CATEGORIA, repository.findAll());
         return LISTA_PRODUCTOS;
           
     }
 
     @RequestMapping("/eliminarproducto")
     public String eliminarProducto(Model model, ProductoModelo producto) {
-        ProductoModelo product = new ProductoModelo();
-        product.eliminarProducto(producto);
-        model.addAttribute(ATR_PRODUCTO, ProductoModelo.listaProductos);
-        model.addAttribute(ATR_CATEGORIA, CategoriaModelo.listaCategorias);
+        ProductoModelo pro = prepository.findOne(producto.getIdProducto());
+        prepository.delete(pro);
+        model.addAttribute(ATR_PRODUCTO, prepository.findAll());
+        model.addAttribute(ATR_CATEGORIA, repository.findAll());
         
         return LISTA_PRODUCTOS;
        

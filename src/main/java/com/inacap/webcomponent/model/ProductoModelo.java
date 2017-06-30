@@ -7,13 +7,20 @@ package com.inacap.webcomponent.model;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Luis
  */
+@Entity
 public class ProductoModelo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idProducto;
     private String nombreProducto;
     private String detalleProducto;
@@ -102,7 +109,7 @@ public class ProductoModelo {
         this.visible = visible;
     }
 
-    public void nuevoProducto(ProductoModelo producto) {
+   /* public void nuevoProducto(ProductoModelo producto) {
         int idProducto = 0;
         
         if (!listaProductos.isEmpty()) {
@@ -151,7 +158,7 @@ public class ProductoModelo {
     
         
     
-
+*/
     
 
 }

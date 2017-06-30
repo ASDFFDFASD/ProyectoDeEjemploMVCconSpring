@@ -8,14 +8,19 @@ package com.inacap.webcomponent.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import com.inacap.webcomponent.model.CategoriaModelo;
+import com.inacap.webcomponent.repository.CategoriaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
  * @author Luis
  */
 @Controller
 public class CategoriaController {
+    
+    @Autowired
+    private CategoriaRepository repository;
     
     @RequestMapping("/nuevacategoria")
     public String nuevaCategoria(Model model) {
@@ -34,38 +39,44 @@ public class CategoriaController {
     
     @RequestMapping("/guardacategoria")
     public String guardaCategoria(Model model,CategoriaModelo categoria){
-     
-        CategoriaModelo cat = new CategoriaModelo();
-        cat.nuevaCategoria(categoria);
         
-        model.addAttribute("lista", CategoriaModelo.listaCategorias);
+        repository.save(categoria);
+        
+        model.addAttribute("lista", repository.findAll());
          
         
         return "listacategorias";
     }
     
+    
+    
     @RequestMapping("/listarcategorias")
     public String listarCategorias(Model model){
         
-        model.addAttribute("lista", CategoriaModelo.listaCategorias);
+        model.addAttribute("lista", repository.findAll());
         
        return "listacategorias"; 
     }
     
     @RequestMapping("/modificarcategoria")
-    public String editarCategorias(Model model, CategoriaModelo categoria){
-        CategoriaModelo cat = new CategoriaModelo();
-        cat.modificarCategoria(categoria);
-        model.addAttribute("lista",CategoriaModelo.listaCategorias );
+    public String editarCategorias(Model model, CategoriaModelo categoria /*,@RequestParam Integer txtId*/){
+        
+        
+        repository.save(categoria);
+        
+        model.addAttribute("lista",repository.findAll() );
         return "listacategorias";
     }
     
     @RequestMapping("/eliminarcategoria")
-    public String eliminarCategorias(Model model, CategoriaModelo categoria){
-        CategoriaModelo cat = new CategoriaModelo();
-        cat.eliminarCategoria(categoria);
+    public String eliminarCategorias(Model model, CategoriaModelo categoria /*, @RequestParam int eTxtId*/){
         
-        model.addAttribute("lista", CategoriaModelo.listaCategorias);
+        CategoriaModelo cat = repository.findOne(categoria.getIdCategoria());
+        
+        
+        repository.delete(cat);
+        
+        model.addAttribute("lista", repository.findAll());
         return "listacategorias";
     }
     
