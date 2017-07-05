@@ -5,12 +5,15 @@
  */
 package com.inacap.webcomponent.model;
 
-import java.util.ArrayList;
-import java.util.Objects;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
 
 /**
  *
@@ -26,15 +29,21 @@ public class ProductoModelo {
     private String detalleProducto;
     private String cantidadProducto;
     private String precioProducto;
-    private String categoriaProducto;
+   
+   
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private CategoriaModelo categoriaProducto;
+    
+    
     private String visible;
 
-    public static ArrayList<ProductoModelo> listaProductos = new ArrayList<>();
+  //  public static ArrayList<ProductoModelo> listaProductos = new ArrayList<>();
 
     public ProductoModelo() {
     }
 
-    public ProductoModelo(Integer idProducto, String nombreProducto, String detalleProducto, String cantidadProducto, String precioProducto, String categoriaProducto, String visible) {
+    public ProductoModelo(Integer idProducto, String nombreProducto, String detalleProducto, String cantidadProducto, String precioProducto, CategoriaModelo categoriaProducto, String visible) {
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;
         this.detalleProducto = detalleProducto;
@@ -44,7 +53,7 @@ public class ProductoModelo {
         this.visible = visible;
     }
 
-    public ProductoModelo(String nombreProducto, String detalleProducto, String cantidadProducto, String precioProducto, String categoriaProducto, String visible) {
+    public ProductoModelo(String nombreProducto, String detalleProducto, String cantidadProducto, String precioProducto, CategoriaModelo categoriaProducto, String visible) {
         this.nombreProducto = nombreProducto;
         this.detalleProducto = detalleProducto;
         this.cantidadProducto = cantidadProducto;
@@ -93,11 +102,11 @@ public class ProductoModelo {
         this.precioProducto = precioProducto;
     }
 
-    public String getCategoriaProducto() {
+    public CategoriaModelo getCategoriaProducto() {
         return categoriaProducto;
     }
 
-    public void setCategoriaProducto(String categoriaProducto) {
+    public void setCategoriaProducto(CategoriaModelo categoriaProducto) {
         this.categoriaProducto = categoriaProducto;
     }
 

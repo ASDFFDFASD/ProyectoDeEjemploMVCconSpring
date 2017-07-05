@@ -102,7 +102,7 @@
                                 <td>{{detalleProducto}}</td>
                                 <td>{{cantidadProducto}}</td>
                                 <td>{{precioProducto}}</td>
-                                <td>{{categoriaProducto}}</td>
+                                <td>{{categoriaProducto.nombre}}</td>
                                 <td>{{visible}}</td>
                                 <td>
                                     <a class="btn-floating yellow darken-1 btnVerDetalle" href="#verDetalleModal"><i class="material-icons">search</i></a>
@@ -117,7 +117,7 @@
 
 
             </div>
-             
+
 
             <div class="col s12 m8 l9">
 
@@ -240,16 +240,16 @@
                             <select name="categoriaProducto" required=""> 
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 {{#categoria}}
-                                <option value="{{nombre}}"> {{nombre}} </option>
+                                <option value="{{idCategoria}}"> {{nombre}} </option>
                                 {{/categoria}}
                             </select>
                             <label>Categoría</label>
                         </div>
-                            <div class="input-field col s4 offset-s2">
-                                <input class="hide" type="text" id="disponible" name="visible" value="Visible" />
-                                <input type="checkbox" id="opcion" checked="checked" />
-                                <label for="opcion">Visible</label>
-                            </div>
+                        <div class="input-field col s4 offset-s2">
+                            <input class="hide" type="text" id="disponible" name="visible" value="Visible" />
+                            <input type="checkbox" id="opcion" checked="checked" />
+                            <label for="opcion">Visible</label>
+                        </div>
 
 
 
@@ -277,74 +277,75 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
 
         <script>
-
-$(document).ready(function () {
-
-    $(".button-collapse").sideNav();
-    //$(".side-nav").sideNav('show');
-    $('.collapsible').collapsible();
-    $('.modal').modal();
-    $('select').material_select();
-
-    $('.btnVerDetalle').click(function () {
-
-        var nombre = $(this).parents('tr').find('td')[0].innerHTML;
-        var detalle = $(this).parents('tr').find('td')[1].innerHTML;
-        var cantidad = $(this).parents('tr').find('td')[2].innerHTML;
-        var precio = $(this).parents('tr').find('td')[3].innerHTML;
-        var categoria = $(this).parents('tr').find('td')[4].innerHTML;
-        var visible = $(this).parents('tr').find('td')[5].innerHTML;
-        $('#pNombre').text(nombre);
-        $('#pDetalle').text(detalle);
-        $('#pCantidad').text(cantidad);
-        $('#pPrecio').text(precio);
-        $('#pCategoria').text(categoria);
-        $('#pVisible').text(visible);
-    });
-
-    $('.btnEliminar').click(function () {
-
-        var nombre = $(this).parents('tr').find('td')[0].innerHTML;
-        var detalle = $(this).parents('tr').find('td')[1].innerHTML;
-        var idCategoria = $(this).parents('tr').attr('id');
-
-        $('#pENombre').text(nombre);
-        $('#pEDetalle').text(detalle);
-        $('#txtIDEliminar').val(idCategoria);
-    });
-
-
-    $('.btnEditar').click(function () {
-
-        var nombre = $(this).parents('tr').find('td')[0].innerHTML;
-        var detalle = $(this).parents('tr').find('td')[1].innerHTML;
-        var idCategoria = $(this).parents('tr').attr('id');
-        var cantidad = $(this).parents('tr').find('td')[2].innerHTML;
-        var precio = $(this).parents('tr').find('td')[3].innerHTML;
-
-
-        $('#txtNombre').val(nombre);
-        $('#txtDetalle').val(detalle);
-        $('#txtID').val(idCategoria);
-        $('#txtcantidad').val(cantidad);
-        $('#txtprecio').val(precio);
-
-
-        Materialize.updateTextFields();
-    });
-       $( '#opcion' ).on( 'click', function() {
-    if( $(this).is(':checked') ){
-        // Hacer algo si el checkbox ha sido seleccionado
-        
-        $('#disponible').val("Visible");
-    } else {
-        // Hacer algo si el checkbox ha sido deseleccionado
-       
-        $('#disponible').val("No Visible");
-    }
-});
-});
-
+            
+            $(document).ready(function () {
+                
+                $(".button-collapse").sideNav();
+                //$(".side-nav").sideNav('show');
+                $('.collapsible').collapsible();
+                $('.modal').modal();
+                $('select').material_select();
+                
+                $('.btnVerDetalle').click(function () {
+                    
+                    var nombre = $(this).parents('tr').find('td')[0].innerHTML;
+                    var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+                    var cantidad = $(this).parents('tr').find('td')[2].innerHTML;
+                    var precio = $(this).parents('tr').find('td')[3].innerHTML;
+                    var categoria = $(this).parents('tr').find('td')[4].innerHTML;
+                    var visible = $(this).parents('tr').find('td')[5].innerHTML;
+                    $('#pNombre').text(nombre);
+                    $('#pDetalle').text(detalle);
+                    $('#pCantidad').text(cantidad);
+                    $('#pPrecio').text(precio);
+                    $('#pCategoria').text(categoria);
+                    $('#pVisible').text(visible);
+                });
+                
+                $('.btnEliminar').click(function () {
+                    
+                    var nombre = $(this).parents('tr').find('td')[0].innerHTML;
+                    var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+                    var idCategoria = $(this).parents('tr').attr('id');
+                    
+                    $('#pENombre').text(nombre);
+                    $('#pEDetalle').text(detalle);
+                    $('#txtIDEliminar').val(idCategoria);
+                });
+                
+                
+                $('.btnEditar').click(function () {
+                    
+                    var nombre = $(this).parents('tr').find('td')[0].innerHTML;
+                    var detalle = $(this).parents('tr').find('td')[1].innerHTML;
+                    var idCategoria = $(this).parents('tr').attr('id');
+                    var cantidad = $(this).parents('tr').find('td')[2].innerHTML;
+                    var precio = $(this).parents('tr').find('td')[3].innerHTML;
+                    
+                    
+                    $('#txtNombre').val(nombre);
+                    $('#txtDetalle').val(detalle);
+                    $('#txtID').val(idCategoria);
+                    $('#txtcantidad').val(cantidad);
+                    $('#txtprecio').val(precio);
+                    
+                    
+                    Materialize.updateTextFields();
+                });
+                $('#opcion').on('click', function () {
+                    if ($(this).is(':checked')) {
+                        // Hacer algo si el checkbox ha sido seleccionado
+                        
+                        $('#disponible').val("Visible");
+                    } else {
+                        // Hacer algo si el checkbox ha sido deseleccionado
+                        
+                        $('#disponible').val("No Visible");
+                    }
+                });
+            });
+            
+         
         </script>
 
     </body>

@@ -44,8 +44,11 @@ public class ProductoController {
     }
   
     @RequestMapping("/listarproductos")
-    public String listarProductos(Model model, ProductoModelo modelo) {
-         model.addAttribute(ATR_PRODUCTO, prepository.findAll());
+    public String listarProductos(Model model, ProductoModelo producto) {
+        
+        
+       
+        model.addAttribute(ATR_PRODUCTO, prepository.findAll());
         model.addAttribute(ATR_CATEGORIA, repository.findAll());
       return LISTA_PRODUCTOS;
     }
@@ -53,8 +56,9 @@ public class ProductoController {
     @RequestMapping("/modificarproducto")
     public String modificarProducto(Model model, ProductoModelo producto) {
         
-       
+        
         prepository.save(producto);
+     
         model.addAttribute(ATR_PRODUCTO, prepository.findAll());
         model.addAttribute(ATR_CATEGORIA, repository.findAll());
         return LISTA_PRODUCTOS;
